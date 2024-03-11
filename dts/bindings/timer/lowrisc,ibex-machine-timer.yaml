@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  Ibex Machine Timer
+
+  The Ibex machine timer provides RISC-V privileged mtime and mtimecmp
+  registers.
+
+compatible: "lowrisc,ibex-machine-timer"
+
+include: base.yaml
+
+properties:
+  reg:
+    required: true
+
+  interrupts:
+    required: true

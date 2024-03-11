@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config SOC_IBEX
+	bool
+
+config SOC
+	default "ibex" if SOC_IBEX

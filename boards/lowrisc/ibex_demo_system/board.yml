@@ -1,0 +1,5 @@
+board:
+  name: ibex_demo_system
+  vendor: lowrisc
+  socs:
+  - name: ibex

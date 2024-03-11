@@ -1,0 +1,55 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/ {
+	#address-cells = <0x01>;
+	#size-cells = <0x01>;
+	compatible = "lowrisc,ibex-demo-system";
+
+	cpus {
+		#address-cells = <0x01>;
+		#size-cells = <0x00>;
+
+		cpu@0 {
+			device_type = "cpu";
+			reg = <0x00>;
+			status = "okay";
+			compatible = "lowrisc,ibex", "riscv";
+			riscv,isa = "rv32imc_zicsr_zifencei";
+
+			hlic: interrupt-controller {
+				#interrupt-cells = <0x01>;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};
+	};
+
+	soc {
+		#address-cells = <0x01>;
+		#size-cells = <0x01>;
+		compatible = "simple-bus";
+		ranges;
+
+		ram0: memory@100000 {
+			device_type = "memory";
+			reg = <0x100000 0x10000>;       // 64 KB
+		};
+
+        uart0: serial@80001000{
+			reg = <0x80001000 0x1000>;        // 4 KB
+			compatible = "lowrisc,ibex-uart";
+			status = "disabled";
+		};
+
+		mtimer: timer@80002000 {
+			compatible = "lowrisc,ibex-machine-timer";
+			reg = <0x80002000 0x1000>;      // 4 KB
+			interrupts = <7 0>;
+			interrupt-parent = <&hlic>;
+			status = "disabled";
+		};
+	};
+};
+

@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if SOC_IBEX
+
+config SYS_CLOCK_HW_CYCLES_PER_SEC
+	default 50000000
+
+config RISCV_SOC_INTERRUPT_INIT
+	default y
+
+config NUM_IRQS
+	default 32
+
+endif # SOC_IBEX

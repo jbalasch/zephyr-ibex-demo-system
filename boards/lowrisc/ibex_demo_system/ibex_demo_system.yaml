@@ -1,0 +1,13 @@
+identifier: ibex_demo_system
+name: Ibex Demo System
+type: mcu
+arch: riscv
+toolchain:
+  - zephyr
+ram: 64
+testing:
+  ignore_tags:
+    - net
+    - bluetooth
+    - watchdog
+vendor: lowrisc
